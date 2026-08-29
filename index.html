@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SMC ICT Formation | Formation Trading Professionnelle</title>
-  <meta name="description" content="Formation complète Smart Money Concepts (SMC) et ICT. Vidéos en épisodes, PDFs, signaux et accompagnement." />
+  <title>Formation Stratégie SMC ICT | Trading Pro Madagascar</title>
+  <meta name="description" content="Formation Stratégie SMC ICT complète. Smart Money Concepts, vidéos, PDFs, signaux et accompagnement." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -29,6 +29,13 @@
     .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(14px); }
     .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; }
     .video-wrapper iframe, .video-wrapper video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .video-wm {
+      position: absolute; z-index: 5; pointer-events: none;
+      font-family: Inter, sans-serif; text-shadow: 0 1px 4px rgba(0,0,0,.85);
+      user-select: none;
+    }
+    .video-wm-tl { top: 8px; left: 10px; font-size: 11px; font-weight: 700; letter-spacing: .04em; color: rgba(255,255,255,.82); }
+    .video-wm-br { bottom: 10px; right: 10px; font-size: 10px; font-weight: 600; color: rgba(245,158,11,.88); }
     .no-download video::-webkit-media-controls-download-button { display: none !important; }
     .chat-bubble { max-width: 78%; }
     .pulse-dot { animation: pulse 2s infinite; }
@@ -41,6 +48,16 @@
       position: absolute; inset: 0; background: rgba(2,6,23,0.92);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 10; text-align: center; padding: 1rem;
+    }
+    .hero-bg {
+      background-image: radial-gradient(ellipse at 20% 0%, rgba(16,185,129,0.18), transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(245,158,11,0.12), transparent 45%),
+                        linear-gradient(180deg, #020617 0%, #0f172a 55%, #020617 100%);
+      background-size: cover;
+      background-position: center;
+    }
+    .inscript-bg {
+      background-image: linear-gradient(180deg, #020617 0%, #0f172a 100%);
     }
   </style>
 </head>
@@ -57,7 +74,7 @@
         </div>
         <div>
           <div class="logo-font text-lg font-bold tracking-wider">SMC<span class="text-accent">/</span>ICT</div>
-          <div class="text-[10px] text-slate-400 -mt-1">FORMATION</div>
+          <div class="text-[10px] text-slate-400 -mt-1">STRATÉGIE</div>
         </div>
       </div>
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -78,19 +95,19 @@
   <main class="pt-20 pb-16">
 
     <!-- HOME -->
-    <section id="section-home" class="section">
+    <section id="section-home" class="section hero-bg">
       <div class="max-w-7xl mx-auto px-4 py-16 md:py-24">
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <div class="inline-flex items-center gap-2 bg-slate-800/80 text-accent text-xs font-medium px-3 py-1 rounded-full mb-6">
               <span class="w-1.5 h-1.5 bg-accent rounded-full"></span>
-              Formation SMC / ICT • Niveau Pro
+              Formation Stratégie SMC ICT
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-              Maîtrisez le <span class="gradient-text">Smart Money</span><br/>Concepts & ICT
+              Formation <span class="gradient-text">Stratégie</span><br/>SMC / ICT
             </h1>
             <p class="text-slate-400 text-lg mb-8 max-w-lg">
-              Inscription <strong class="text-white">gratuite</strong>. Explorez le site, puis débloquez les vidéos en épisodes en validant votre abonnement (15 000 Ar).
+              Inscription <strong class="text-white">gratuite</strong>. Explorez le site, puis débloquez les vidéos en épisodes en validant votre abonnement (20 000 Ar).
             </p>
             <div class="flex flex-wrap gap-4">
               <button onclick="showSection('membre')" class="bg-accent hover:bg-emerald-400 text-dark font-bold px-8 py-3.5 rounded-xl text-base transition shadow-lg shadow-accent/20">
@@ -117,7 +134,7 @@
                 <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Signaux + chat admin</span></li>
               </ul>
               <div class="mt-6 pt-4 border-t border-slate-700 text-center">
-                <p class="text-xs text-slate-500">15 000 Ar • MVola ou USDT</p>
+                <p class="text-xs text-slate-500">20 000 Ar • MVola ou USDT</p>
               </div>
             </div>
           </div>
@@ -128,7 +145,7 @@
     <!-- FORMATION -->
     <section id="section-formation" class="section hidden">
       <div class="max-w-5xl mx-auto px-4 py-16">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4">Programme de Formation <span class="text-accent">SMC / ICT</span></h2>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Programme <span class="text-accent">Stratégie SMC / ICT</span></h2>
         <p class="text-slate-400 mb-12 max-w-2xl">Pédagogie progressive et orientée résultats.</p>
         <div class="space-y-6">
           <div class="bg-slate-900 border border-slate-800 rounded-xl p-6"><div class="flex items-start gap-4"><div class="w-12 h-12 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-bold text-lg">01</div><div><h3 class="text-xl font-semibold mb-2">Fondamentaux du Smart Money</h3><p class="text-slate-400 text-sm">Structure, Order Blocks, FVG, Liquidity…</p></div></div></div>
@@ -166,15 +183,15 @@
       <div class="max-w-4xl mx-auto px-4 py-16">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold mb-3">Débloquer les Vidéos</h2>
-          <p class="text-slate-400">Inscription gratuite d’abord → puis abonnement 15 000 Ar pour accéder aux épisodes</p>
+          <p class="text-slate-400">Inscription gratuite d’abord → puis abonnement 20 000 Ar pour accéder aux épisodes</p>
         </div>
         <div class="bg-slate-900 border border-slate-700 rounded-2xl overflow-hidden shadow-2xl">
           <div class="bg-gradient-to-r from-accent/20 to-gold/10 px-8 py-6 border-b border-slate-700">
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
                 <div class="text-sm text-slate-400 mb-1">Abonnement Formation</div>
-                <div class="text-4xl font-extrabold" id="display-price-ar">15 000 <span class="text-lg font-medium text-slate-300">Ar</span></div>
-                <div class="text-accent font-medium mt-1" id="display-price-usdt">≈ 3.5 USDT (TRC20)</div>
+                <div class="text-4xl font-extrabold" id="display-price-ar">20 000 <span class="text-lg font-medium text-slate-300">Ar</span></div>
+                <div class="text-accent font-medium mt-1" id="display-price-usdt">≈ 4.5 USDT (TRC20)</div>
               </div>
               <div class="text-right text-sm text-slate-400">Paiement unique<br/>Déblocage après validation admin</div>
             </div>
@@ -183,7 +200,7 @@
             <h3 class="font-semibold text-lg mb-4">Comment débloquer les vidéos ?</h3>
             <ol class="space-y-3 text-sm text-slate-300 mb-8 list-decimal list-inside">
               <li>Inscrivez-vous <strong>gratuitement</strong> (Espace Membre) → vous recevez un code</li>
-              <li>Payez <strong id="price-text-ar">15 000 Ar</strong> via MVola ou <strong id="price-text-usdt">3.5 USDT</strong></li>
+              <li>Payez <strong id="price-text-ar">20 000 Ar</strong> via MVola ou <strong id="price-text-usdt">4.5 USDT</strong></li>
               <li>Envoyez la capture + votre code / téléphone sur WhatsApp admin</li>
               <li>L’admin valide → les épisodes se débloquent</li>
             </ol>
@@ -196,7 +213,7 @@
               <div class="bg-slate-800/80 rounded-xl p-5 border border-slate-700">
                 <div class="text-xs text-slate-400 mb-2">USDT TRC20</div>
                 <div class="font-mono text-sm break-all" id="display-usdt">TXxxxxxxxxxxxxxxxxxxxxxxxxxx</div>
-                <div class="text-xs text-slate-500 mt-1">Montant : <span id="display-usdt-amount">3.5</span> USDT</div>
+                <div class="text-xs text-slate-500 mt-1">Montant : <span id="display-usdt-amount">4.5</span> USDT</div>
               </div>
             </div>
             <form id="pay-form" class="space-y-5" onsubmit="submitPayment(event)">
@@ -214,8 +231,8 @@
                 <label class="block text-sm font-medium mb-1.5">Méthode de paiement *</label>
                 <select id="pay-method" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:border-accent">
                   <option value="">Choisir...</option>
-                  <option value="mvola">MVola — 15 000 Ar</option>
-                  <option value="usdt">USDT TRC20 — 3.5 USDT</option>
+                  <option value="mvola">MVola — 20 000 Ar</option>
+                  <option value="usdt">USDT TRC20 — 4.5 USDT</option>
                 </select>
               </div>
               <div>
@@ -239,7 +256,7 @@
     </section>
 
     <!-- MEMBRE -->
-    <section id="section-membre" class="section hidden">
+    <section id="section-membre" class="section hidden inscript-bg min-h-[80vh]">
       <div class="max-w-7xl mx-auto px-4 py-8">
         <!-- FREE REGISTER + LOGIN -->
         <div id="membre-auth" class="max-w-md mx-auto">
@@ -270,7 +287,7 @@
               <p class="text-2xl font-mono font-bold text-gold tracking-wider" id="reg-code-display">—</p>
               <p class="text-sm text-slate-300 mt-3 mb-1">Votre mot de passe :</p>
               <p class="text-xl font-mono font-bold text-accent tracking-wider" id="reg-pass-display">—</p>
-              <p class="text-sm text-gold font-semibold mt-4">⚠️ Tadidio tsara ny mot de passe !</p>
+              <p class="text-sm text-gold font-semibold mt-4">⚠️ Notez bien votre mot de passe !</p>
               <p class="text-xs text-slate-500 mt-1">Notez bien le code et le mot de passe. Ils vous serviront pour vous connecter et pour le paiement.</p>
               <button onclick="switchAuthTab('login')" class="mt-4 text-sm text-accent underline">Aller à la connexion →</button>
             </div>
@@ -289,9 +306,40 @@
                 <label class="block text-sm mb-1">Mot de passe *</label>
                 <input type="password" id="login-pass" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:border-accent">
               </div>
+              <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+                <input type="checkbox" id="login-remember" class="rounded border-slate-600 bg-slate-800 text-accent focus:ring-accent">
+                Rester connecté sur cet appareil
+              </label>
               <button type="submit" class="w-full bg-accent text-dark font-bold py-2.5 rounded-lg">Se connecter</button>
               <p id="login-error" class="text-xs text-center text-red-400 hidden">Identifiants incorrects.</p>
+              <button type="button" onclick="switchAuthTab('forgot')" class="w-full text-center text-xs text-gold hover:underline pt-1">Mot de passe oublié ?</button>
             </form>
+          </div>
+
+          <!-- Mot de passe oublié -->
+          <div id="auth-forgot" class="hidden">
+            <h2 class="text-xl font-bold text-center mb-2">Mot de passe oublié</h2>
+            <p class="text-center text-sm text-slate-400 mb-6">Entrez le téléphone et le nom exacts utilisés à l’inscription</p>
+            <form onsubmit="resetPasswordMember(event)" class="bg-slate-900 border border-slate-700 rounded-xl p-6 space-y-4">
+              <div>
+                <label class="block text-sm mb-1">Téléphone *</label>
+                <input type="tel" id="forgot-tel" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:border-accent" placeholder="+261 3X XX XXX XX">
+              </div>
+              <div>
+                <label class="block text-sm mb-1">Nom complet (exact) *</label>
+                <input type="text" id="forgot-nom" required class="w-full bg-slate-800 border border-slate-600 rounded-lg px-4 py-2.5 focus:outline-none focus:border-accent" placeholder="Comme à l’inscription">
+              </div>
+              <button type="submit" class="w-full bg-gold text-dark font-bold py-2.5 rounded-lg">Générer un nouveau mot de passe</button>
+              <p id="forgot-error" class="text-xs text-center text-red-400 hidden"></p>
+            </form>
+            <div id="forgot-success" class="hidden mt-4 p-5 bg-accent/10 border border-accent/30 rounded-xl text-center">
+              <p class="font-semibold text-accent mb-2">Nouveau mot de passe créé</p>
+              <p class="text-sm text-slate-300 mb-1">Notez-le immédiatement :</p>
+              <p class="text-xl font-mono font-bold text-gold tracking-wider" id="forgot-pass-display">—</p>
+              <p class="text-xs text-slate-500 mt-3">L’ancien mot de passe ne fonctionne plus.</p>
+              <button onclick="switchAuthTab('login')" class="mt-4 text-sm text-accent underline">Aller à la connexion →</button>
+            </div>
+            <button type="button" onclick="switchAuthTab('login')" class="mt-4 w-full text-center text-xs text-slate-400 hover:text-white">← Retour connexion</button>
           </div>
         </div>
 
@@ -322,6 +370,10 @@
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
                     Chat Admin
                   </button>
+                  <button onclick="showMembreTab('compte')" class="side-nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-left text-slate-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                    Mon compte
+                  </button>
                 </nav>
                 <div class="mt-4 pt-3 border-t border-slate-800">
                   <button onclick="logoutMembre()" class="w-full text-xs text-slate-500 hover:text-red-400 py-2">Déconnexion</button>
@@ -345,16 +397,8 @@
 
               <div id="tab-pdfs" class="membre-content hidden">
                 <h2 class="text-xl font-bold mb-4">Documents PDF</h2>
-                <div class="space-y-3">
-                  <a href="#" class="flex items-center justify-between bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-accent/50 transition">
-                    <div class="flex items-center gap-3"><div class="w-10 h-10 bg-red-500/10 text-red-400 rounded-lg flex items-center justify-center text-xs font-bold">PDF</div><div><div class="font-medium">Guide Order Blocks</div><div class="text-xs text-slate-400">24 pages</div></div></div>
-                    <span class="text-accent text-sm">Ouvrir →</span>
-                  </a>
-                  <a href="#" class="flex items-center justify-between bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-accent/50 transition">
-                    <div class="flex items-center gap-3"><div class="w-10 h-10 bg-red-500/10 text-red-400 rounded-lg flex items-center justify-center text-xs font-bold">PDF</div><div><div class="font-medium">Checklist Pre-Trade ICT</div><div class="text-xs text-slate-400">8 pages</div></div></div>
-                    <span class="text-accent text-sm">Ouvrir →</span>
-                  </a>
-                </div>
+                <div id="pdfs-list" class="space-y-3"></div>
+                <p id="no-pdfs" class="text-center text-sm text-slate-500 mt-8 hidden">Aucun PDF disponible pour le moment.</p>
               </div>
 
               <div id="tab-signaux" class="membre-content hidden">
@@ -379,6 +423,35 @@
                   <form onsubmit="sendChat(event)" class="p-3 border-t border-slate-800 flex gap-2">
                     <input type="text" id="chat-input" placeholder="Écrire un message..." class="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-accent">
                     <button type="submit" class="bg-accent text-dark font-medium px-4 py-2 rounded-lg text-sm">Envoyer</button>
+                  </form>
+                </div>
+              </div>
+
+              <div id="tab-compte" class="membre-content hidden">
+                <h2 class="text-xl font-bold mb-4">Mon compte</h2>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6 space-y-3">
+                  <div class="flex justify-between text-sm"><span class="text-slate-400">Nom</span><span id="compte-nom" class="font-medium">—</span></div>
+                  <div class="flex justify-between text-sm"><span class="text-slate-400">Code</span><span id="compte-code" class="font-mono text-gold">—</span></div>
+                  <div class="flex justify-between text-sm"><span class="text-slate-400">Téléphone</span><span id="compte-tel">—</span></div>
+                  <div class="flex justify-between text-sm"><span class="text-slate-400">Statut</span><span id="compte-status">—</span></div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
+                  <h3 class="font-semibold mb-3">Changer le mot de passe</h3>
+                  <form onsubmit="changePasswordMember(event)" class="space-y-3">
+                    <div>
+                      <label class="block text-sm mb-1">Mot de passe actuel *</label>
+                      <input type="password" id="chg-old" required class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-1">Nouveau mot de passe *</label>
+                      <input type="password" id="chg-new" required minlength="6" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm" placeholder="Min. 6 caractères">
+                    </div>
+                    <div>
+                      <label class="block text-sm mb-1">Confirmer *</label>
+                      <input type="password" id="chg-confirm" required minlength="6" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <p id="chg-error" class="text-xs text-red-400 hidden"></p>
+                    <button type="submit" class="w-full bg-accent/20 text-accent py-2 rounded-lg text-sm font-medium hover:bg-accent/30">Enregistrer</button>
                   </form>
                 </div>
               </div>
@@ -443,16 +516,28 @@
             <button onclick="savePaymentSettings()" class="mt-4 bg-gold/20 text-gold hover:bg-gold/30 px-5 py-2 rounded-lg text-sm font-medium">Enregistrer</button>
           </div>
 
-          <!-- Tableau membres -->
+          <!-- Gérer les accès membres -->
           <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6 overflow-x-auto">
-            <h3 class="font-semibold mb-4">Tableau des membres</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <h3 class="font-semibold text-gold">Gérer les accès membres</h3>
+              <div class="flex flex-wrap gap-2">
+                <input type="text" id="member-search" placeholder="Rechercher nom, code, tél..." oninput="renderAdmin()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm w-44">
+                <select id="member-filter" onchange="renderAdmin()" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-1.5 text-sm">
+                  <option value="all">Tous</option>
+                  <option value="paid">Abonnés (accès)</option>
+                  <option value="free">Gratuits (bloqués)</option>
+                </select>
+                <button type="button" onclick="exportMembersCsv()" class="bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-lg text-xs">Export CSV</button>
+              </div>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">Activer = débloque Vidéos + PDFs · Révoquer = rebloque tout · Réinit. MDP = nouveau mot de passe</p>
             <table class="w-full text-sm text-left">
               <thead class="text-xs text-slate-400 border-b border-slate-700">
                 <tr>
                   <th class="py-2 pr-3">Nom</th>
                   <th class="py-2 pr-3">Code</th>
                   <th class="py-2 pr-3">Téléphone</th>
-                  <th class="py-2 pr-3">Statut</th>
+                  <th class="py-2 pr-3">Accès</th>
                   <th class="py-2 pr-3">Date</th>
                   <th class="py-2">Action</th>
                 </tr>
@@ -477,16 +562,26 @@
               <input type="text" id="new-ep-title" placeholder="Titre de l'épisode" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
             </div>
             <div class="grid md:grid-cols-2 gap-3 mb-3">
-              <select id="new-ep-niveau" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
-                <option value="debutant">Niveau : Débutant</option>
-                <option value="avance">Niveau : Avancé</option>
-              </select>
               <input type="text" id="new-ep-duree" placeholder="Durée (ex: 45 min)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
             </div>
             <input type="text" id="new-ep-url" placeholder="Lien vidéo privée (.mp4 / Drive / Dropbox / serveur)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3">
             <input type="text" id="new-ep-desc" placeholder="Description (optionnel)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3">
             <button onclick="addEpisode()" class="w-full bg-accent/20 text-accent py-2 rounded-lg text-sm font-medium hover:bg-accent/30">Publier l'épisode</button>
             <div id="admin-episodes-list" class="mt-4 space-y-2"></div>
+          </div>
+
+          <!-- Admin PDF management -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6">
+            <h3 class="font-semibold mb-3">Ajouter un PDF (fichier mivantana)</h3>
+            <p class="text-xs text-slate-500 mb-3">Fichier .pdf stocké dans IndexedDB (plus grand que localStorage). Visible dans le site pour les abonnés uniquement.</p>
+            <div class="grid md:grid-cols-2 gap-3 mb-3">
+              <input type="text" id="new-pdf-title" placeholder="Titre du document (ex: Guide Order Blocks)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+              <input type="text" id="new-pdf-pages" placeholder="Pages (ex: 24 pages) — optionnel" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <input type="file" id="new-pdf-file" accept="application/pdf,.pdf" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3 file:mr-3 file:py-1 file:px-3 file:rounded-md file:border-0 file:bg-red-500/30 file:text-red-300">
+            <p class="text-[11px] text-slate-500 mb-3">Max ~15 Mo par PDF (IndexedDB). Évitez les fichiers très lourds sur mobile.</p>
+            <button onclick="addPdf()" class="w-full bg-red-500/20 text-red-400 py-2 rounded-lg text-sm font-medium hover:bg-red-500/30">Publier le PDF dans le site</button>
+            <div id="admin-pdfs-list" class="mt-4 space-y-2"></div>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6 mb-6">
@@ -514,7 +609,7 @@
 
   <footer class="border-t border-slate-800 bg-slate-950 py-8">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <div class="logo-font text-lg font-bold mb-2">SMC<span class="text-accent">/</span>ICT <span class="text-slate-500 font-normal text-sm">FORMATION</span></div>
+      <div class="logo-font text-lg font-bold mb-2">SMC<span class="text-accent">/</span>ICT <span class="text-slate-500 font-normal text-sm">STRATÉGIE</span></div>
       <p class="text-slate-500 text-sm mb-4">Formation Trading • Madagascar</p>
       <p class="text-xs text-slate-600 tracking-widest uppercase">Discipline • Patience</p>
       <p class="text-[10px] text-slate-700 mt-4">© 2026 SMC ICT Formation</p>
@@ -522,13 +617,22 @@
   </footer>
 
   <script>
-    const ADMIN_KEY = 'SMCADMIN2026';
+    /* Admin key: not stored as plain readable string equality target */
+    const _ak = [83,77,67,65,68,77,73,78,50,48,50,54];
+    function _akStr() { return String.fromCharCode.apply(null, _ak); }
+    function simpleHash(s) {
+      let h = 0;
+      for (let i = 0; i < s.length; i++) h = ((h << 5) - h) + s.charCodeAt(i) | 0;
+      return String(h);
+    }
+    const ADMIN_KEY_HASH = simpleHash(_akStr());
+
     const DEFAULT_SETTINGS = {
       mvola: '034 00 000 00',
       mvolaName: 'Admin SMC/ICT',
       usdt: 'TXxxxxxxxxxxxxxxxxxxxxxxxxxx',
-      usdtAmount: '3.5',
-      priceAr: '15000',
+      usdtAmount: '4.5',
+      priceAr: '20000',
       adminContact: '+261 34 00 000 00',
       lienSignaux: 'https://votre-site-signaux.com'
     };
@@ -536,25 +640,98 @@
     let isMembreLogged = false;
     let isAdminLogged = false;
     let currentMember = null;
+    let pdfDb = null;
+
+    function openPdfDb() {
+      return new Promise((resolve, reject) => {
+        if (pdfDb) { resolve(pdfDb); return; }
+        const req = indexedDB.open('smc_pdf_store', 1);
+        req.onupgradeneeded = function(e) {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains('pdfs')) db.createObjectStore('pdfs', { keyPath: 'id' });
+        };
+        req.onsuccess = function(e) { pdfDb = e.target.result; resolve(pdfDb); };
+        req.onerror = function() { reject(req.error); };
+      });
+    }
+    async function idbPutPdf(record) {
+      const db = await openPdfDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('pdfs', 'readwrite');
+        tx.objectStore('pdfs').put(record);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
+    async function idbGetPdf(id) {
+      const db = await openPdfDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('pdfs', 'readonly');
+        const r = tx.objectStore('pdfs').get(id);
+        r.onsuccess = () => resolve(r.result || null);
+        r.onerror = () => reject(r.error);
+      });
+    }
+    async function idbDeletePdf(id) {
+      const db = await openPdfDb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction('pdfs', 'readwrite');
+        tx.objectStore('pdfs').delete(id);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    }
 
     function loadData() {
+      let rawPdfs = [];
+      try {
+        rawPdfs = JSON.parse(localStorage.getItem('smc_pdfs_meta') || localStorage.getItem('smc_pdfs') || '[]');
+      } catch (e) { rawPdfs = []; }
+      rawPdfs.forEach(p => {
+        if (p && p.dataUrl && p.id) {
+          idbPutPdf(p).catch(function() {});
+        }
+      });
+      if (rawPdfs.some(function(p) { return p && p.dataUrl; })) {
+        try {
+          var metaOnly = rawPdfs.map(function(p) {
+            return { id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '' };
+          });
+          localStorage.setItem('smc_pdfs_meta', JSON.stringify(metaOnly));
+          localStorage.removeItem('smc_pdfs');
+        } catch (e) {}
+      }
       return {
         members: JSON.parse(localStorage.getItem('smc_members') || '[]'),
         pending: JSON.parse(localStorage.getItem('smc_pending') || '[]'),
         episodes: JSON.parse(localStorage.getItem('smc_episodes') || '[]'),
+        pdfs: rawPdfs.map(function(p) {
+          return { id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '' };
+        }),
         signals: JSON.parse(localStorage.getItem('smc_signals') || '[]'),
-        settings: { ...DEFAULT_SETTINGS, ...JSON.parse(localStorage.getItem('smc_settings') || '{}') }
+        settings: Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem('smc_settings') || '{}'))
       };
     }
     function saveMembers(arr) { localStorage.setItem('smc_members', JSON.stringify(arr)); pushToCloud('members', arr); }
     function savePending(arr) { localStorage.setItem('smc_pending', JSON.stringify(arr)); pushToCloud('pending', arr); }
     function saveEpisodes(arr) { localStorage.setItem('smc_episodes', JSON.stringify(arr)); pushToCloud('episodes', arr); }
+    function savePdfsMeta(arr) {
+      // only metadata in localStorage (ny fichier PDF mihitsy dia mijanona ao amin'ny IndexedDB an'ny téléphone, tsy azo alefa amin'ny cloud noho ny habeny)
+      const meta = arr.map(p => ({ id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '' }));
+      localStorage.setItem('smc_pdfs_meta', JSON.stringify(meta));
+      // clean old key if any
+      try { localStorage.removeItem('smc_pdfs'); } catch (e) {}
+      pushToCloud('pdfs_meta', meta);
+    }
+    function savePdfs(arr) { savePdfsMeta(arr); }
     function saveSignals(arr) { localStorage.setItem('smc_signals', JSON.stringify(arr)); pushToCloud('signals', arr); }
     function saveSettings(obj) { localStorage.setItem('smc_settings', JSON.stringify(obj)); pushToCloud('settings', obj); }
 
     // ===== Firebase Cloud Sync =====
     // Mampiasa Firestore mba hifandraisan'ny data (vidéo, mpikambana, sns.) amin'ny mpampiasa REHETRA,
     // tsy amin'ilay téléphone/navigateur nametrahana azy ihany.
+    // Fanamarihana: ny fichier PDF mihitsy (binary) dia MIJANONA ao amin'ny IndexedDB an'ny téléphone
+    // nametrahana azy ihany (satria be loatra ho an'ny Firestore); ny anarana/mari-pahalalana (meta) ihany no zaraina.
     const firebaseConfig = {
       apiKey: "AIzaSyA2HRh3eaPqkC7Z4c7xzxrl7xiyAFgwrGg",
       authDomain: "smc-ict-formation.firebaseapp.com",
@@ -572,12 +749,13 @@
         firebase.initializeApp(firebaseConfig);
         cloudDb = firebase.firestore();
         cloudReady = true;
-        ['members','pending','episodes','signals','settings'].forEach(key => {
+        ['members','pending','episodes','signals','settings','pdfs_meta'].forEach(key => {
           cloudDb.collection('smc_data').doc(key).onSnapshot(function(doc) {
             if (!doc.exists) return;
             const value = doc.data().value;
             suppressPush = true;
-            localStorage.setItem('smc_' + key, JSON.stringify(value));
+            const storageKey = key === 'pdfs_meta' ? 'smc_pdfs_meta' : 'smc_' + key;
+            localStorage.setItem(storageKey, JSON.stringify(value));
             suppressPush = false;
             refreshCurrentView();
           }, function(err) {
@@ -597,8 +775,31 @@
     }
 
     function refreshCurrentView() {
-      if (typeof isAdminLogged !== 'undefined' && isAdminLogged) { renderAdmin(); }
-      if (typeof isMembreLogged !== 'undefined' && isMembreLogged) { renderEpisodes(); renderSignaux(); }
+      if (typeof isAdminLogged !== 'undefined' && isAdminLogged && typeof renderAdmin === 'function') { renderAdmin(); }
+      if (typeof isMembreLogged !== 'undefined' && isMembreLogged) {
+        if (typeof renderEpisodes === 'function') renderEpisodes();
+        if (typeof renderSignaux === 'function') renderSignaux();
+        if (typeof renderPdfs === 'function') renderPdfs();
+      }
+    }
+
+    function saveSession(memberId, remember) {
+      const payload = JSON.stringify({ id: memberId, t: Date.now() });
+      if (remember) localStorage.setItem('smc_session', payload);
+      else sessionStorage.setItem('smc_session', payload);
+    }
+    function clearSession() {
+      localStorage.removeItem('smc_session');
+      sessionStorage.removeItem('smc_session');
+    }
+    function restoreSession() {
+      let raw = sessionStorage.getItem('smc_session') || localStorage.getItem('smc_session');
+      if (!raw) return null;
+      try {
+        const { id } = JSON.parse(raw);
+        const data = loadData();
+        return data.members.find(m => m.id === id) || null;
+      } catch (e) { return null; }
     }
 
     // Toast notification
@@ -632,8 +833,8 @@
 
     function applyPaymentDisplay() {
       const s = loadData().settings;
-      const ar = Number(s.priceAr || 15000).toLocaleString('fr-FR');
-      const usdt = s.usdtAmount || '3.5';
+      const ar = Number(s.priceAr || 20000).toLocaleString('fr-FR');
+      const usdt = s.usdtAmount || '4.5';
       document.getElementById('display-price-ar').innerHTML = ar + ' <span class="text-lg font-medium text-slate-300">Ar</span>';
       document.getElementById('display-price-usdt').textContent = '≈ ' + usdt + ' USDT (TRC20)';
       document.getElementById('price-text-ar').textContent = ar + ' Ar';
@@ -677,14 +878,26 @@
     }
 
     function switchAuthTab(tab) {
+      const reg = document.getElementById('auth-register');
+      const log = document.getElementById('auth-login');
+      const forg = document.getElementById('auth-forgot');
+      if (reg) reg.classList.add('hidden');
+      if (log) log.classList.add('hidden');
+      if (forg) forg.classList.add('hidden');
       if (tab === 'register') {
-        document.getElementById('auth-register').classList.remove('hidden');
-        document.getElementById('auth-login').classList.add('hidden');
+        reg.classList.remove('hidden');
         document.getElementById('tab-reg-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium bg-accent text-dark';
         document.getElementById('tab-log-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium text-slate-400';
+      } else if (tab === 'forgot') {
+        forg.classList.remove('hidden');
+        document.getElementById('tab-reg-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium text-slate-400';
+        document.getElementById('tab-log-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium text-slate-400';
+        const fs = document.getElementById('forgot-success');
+        if (fs) fs.classList.add('hidden');
+        const form = forg.querySelector('form');
+        if (form) form.classList.remove('hidden');
       } else {
-        document.getElementById('auth-register').classList.add('hidden');
-        document.getElementById('auth-login').classList.remove('hidden');
+        log.classList.remove('hidden');
         document.getElementById('tab-reg-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium text-slate-400';
         document.getElementById('tab-log-btn').className = 'flex-1 py-2 rounded-lg text-sm font-medium bg-accent text-dark';
       }
@@ -720,13 +933,14 @@
       const passEl = document.getElementById('reg-pass-display');
       if (passEl) passEl.textContent = password;
       document.querySelector('#auth-register form').classList.add('hidden');
-      showToast('Compte créé ! Tadidio tsara ny mot de passe.');
+      showToast('Compte créé ! Notez bien votre mot de passe.');
     }
 
     function loginMembre(e) {
       e.preventDefault();
       const id = document.getElementById('login-id').value.trim();
       const pass = document.getElementById('login-pass').value;
+      const remember = document.getElementById('login-remember') && document.getElementById('login-remember').checked;
       const data = loadData();
       const member = data.members.find(m =>
         (m.tel === id || m.code === id) && m.password === pass
@@ -735,11 +949,13 @@
       if (member) {
         isMembreLogged = true;
         currentMember = member;
+        saveSession(member.id, remember);
         errEl.classList.add('hidden');
         document.getElementById('membre-auth').classList.add('hidden');
         document.getElementById('membre-dashboard').classList.remove('hidden');
         updateMemberUI();
         showMembreTab('videos');
+        showToast('Bienvenue, ' + member.nom);
       } else {
         errEl.classList.remove('hidden');
       }
@@ -748,15 +964,76 @@
     function logoutMembre() {
       isMembreLogged = false;
       currentMember = null;
+      clearSession();
       document.getElementById('membre-dashboard').classList.add('hidden');
       document.getElementById('membre-auth').classList.remove('hidden');
       document.getElementById('login-id').value = '';
       document.getElementById('login-pass').value = '';
+      switchAuthTab('login');
+    }
+
+    function resetPasswordMember(e) {
+      e.preventDefault();
+      const tel = document.getElementById('forgot-tel').value.trim();
+      const nom = document.getElementById('forgot-nom').value.trim();
+      const err = document.getElementById('forgot-error');
+      const data = loadData();
+      const member = data.members.find(m =>
+        m.tel === tel && (m.nom || '').toLowerCase() === nom.toLowerCase()
+      );
+      if (!member) {
+        err.textContent = 'Aucun compte trouvé avec ce téléphone + nom.';
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      const newPass = genPass();
+      member.password = newPass;
+      saveMembers(data.members);
+      document.querySelector('#auth-forgot form').classList.add('hidden');
+      document.getElementById('forgot-success').classList.remove('hidden');
+      document.getElementById('forgot-pass-display').textContent = newPass;
+      showToast('Nouveau mot de passe généré');
+    }
+
+    function changePasswordMember(e) {
+      e.preventDefault();
+      if (!currentMember) return;
+      const oldP = document.getElementById('chg-old').value;
+      const neu = document.getElementById('chg-new').value;
+      const conf = document.getElementById('chg-confirm').value;
+      const err = document.getElementById('chg-error');
+      if (currentMember.password !== oldP) {
+        err.textContent = 'Mot de passe actuel incorrect.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (neu.length < 6) {
+        err.textContent = 'Le nouveau mot de passe doit avoir au moins 6 caractères.';
+        err.classList.remove('hidden');
+        return;
+      }
+      if (neu !== conf) {
+        err.textContent = 'La confirmation ne correspond pas.';
+        err.classList.remove('hidden');
+        return;
+      }
+      err.classList.add('hidden');
+      const data = loadData();
+      const m = data.members.find(x => x.id === currentMember.id);
+      if (m) {
+        m.password = neu;
+        saveMembers(data.members);
+        currentMember = m;
+        document.getElementById('chg-old').value = '';
+        document.getElementById('chg-new').value = '';
+        document.getElementById('chg-confirm').value = '';
+        showToast('Mot de passe modifié');
+      }
     }
 
     function updateMemberUI() {
       if (!currentMember) return;
-      // refresh from storage
       const data = loadData();
       currentMember = data.members.find(m => m.id === currentMember.id) || currentMember;
       document.getElementById('membre-nom').textContent = currentMember.nom;
@@ -769,11 +1046,98 @@
         btnPay.classList.add('hidden');
       } else {
         statusEl.innerHTML = '<span class="text-gold">Gratuit — Vidéos bloquées</span>';
-        msgEl.textContent = 'Vidéos verrouillées. Payez 15 000 Ar pour débloquer.';
+        msgEl.textContent = 'Vidéos verrouillées. Payez pour débloquer.';
         btnPay.classList.remove('hidden');
       }
+      const cn = document.getElementById('compte-nom');
+      if (cn) {
+        cn.textContent = currentMember.nom || '—';
+        document.getElementById('compte-code').textContent = currentMember.code || '—';
+        document.getElementById('compte-tel').textContent = currentMember.tel || '—';
+        document.getElementById('compte-status').innerHTML = currentMember.subscribed
+          ? '<span class="text-accent">Abonnement actif ✓</span>'
+          : '<span class="text-gold">Gratuit (vidéos bloquées)</span>';
+      }
       renderEpisodes();
+      renderPdfs();
       renderSignaux();
+    }
+
+    function renderPdfs() {
+      const data = loadData();
+      const list = document.getElementById('pdfs-list');
+      const empty = document.getElementById('no-pdfs');
+      const pdfs = data.pdfs || [];
+      if (!list) return;
+      const locked = !(currentMember && currentMember.subscribed);
+      if (!pdfs.length) {
+        list.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        return;
+      }
+      if (empty) empty.classList.add('hidden');
+      if (locked) {
+        list.innerHTML = '<div class="bg-slate-900 border border-slate-800 rounded-xl p-8 text-center">' +
+          '<svg class="w-12 h-12 text-gold mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
+          '<p class="font-semibold text-white mb-1">PDFs verrouillés</p>' +
+          '<p class="text-sm text-slate-400 mb-4">Abonnement requis (20 000 Ar) pour accéder aux documents</p>' +
+          '<button onclick="showSection(\'tarifs\')" class="bg-gold text-dark font-semibold px-5 py-2 rounded-lg text-sm">Débloquer →</button></div>';
+        return;
+      }
+      list.innerHTML = pdfs.map(p =>
+        '<button onclick="openPdfById(' + p.id + ')" class="w-full flex items-center justify-between bg-slate-900 border border-slate-800 rounded-xl p-4 hover:border-accent/50 transition text-left">' +
+        '<div class="flex items-center gap-3"><div class="w-10 h-10 bg-red-500/10 text-red-400 rounded-lg flex items-center justify-center text-xs font-bold">PDF</div>' +
+        '<div><div class="font-medium">' + escapeHtml(p.title || 'Document') + '</div>' +
+        '<div class="text-xs text-slate-400">' + escapeHtml(p.pages || '') + (p.size ? ' · ' + Math.round(p.size/1024) + ' Ko' : '') + '</div></div></div>' +
+        '<span class="text-accent text-sm">Voir dans le site →</span></button>'
+      ).join('');
+    }
+
+    async function openPdfById(id) {
+      try {
+        let rec = await idbGetPdf(id);
+        if (rec && rec.dataUrl) {
+          openPdfViewer(rec.dataUrl, rec.title || 'Document');
+          return;
+        }
+        // fallback old localStorage dataUrl
+        const data = loadData();
+        const p = (data.pdfs || []).find(x => x.id === id);
+        if (p && p.dataUrl) {
+          openPdfViewer(p.dataUrl, p.title || 'Document');
+          return;
+        }
+        alert('PDF introuvable (peut-être stocké sur un autre navigateur/appareil).');
+      } catch (e) {
+        alert('Erreur ouverture PDF');
+      }
+    }
+
+    function openPdfViewer(src, title) {
+      if (!src) return;
+      let modal = document.getElementById('pdf-viewer-modal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'pdf-viewer-modal';
+        modal.className = 'fixed inset-0 z-[100] flex flex-col bg-dark';
+        modal.innerHTML = '<div class="flex items-center justify-between px-4 py-3 border-b border-slate-700 bg-slate-900">' +
+          '<h3 id="pdf-viewer-title" class="font-semibold text-sm truncate pr-4"></h3>' +
+          '<button onclick="closePdfViewer()" class="bg-slate-700 hover:bg-slate-600 text-white px-4 py-1.5 rounded-lg text-sm">Fermer</button></div>' +
+          '<iframe id="pdf-viewer-frame" class="flex-1 w-full border-0 bg-white"></iframe>';
+        document.body.appendChild(modal);
+      }
+      document.getElementById('pdf-viewer-title').textContent = title || 'PDF';
+      document.getElementById('pdf-viewer-frame').src = src;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePdfViewer() {
+      const modal = document.getElementById('pdf-viewer-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.getElementById('pdf-viewer-frame').src = '';
+      }
+      document.body.style.overflow = '';
     }
 
     function showMembreTab(tab) {
@@ -822,7 +1186,7 @@
           media = '<div class="locked-overlay">' +
             '<svg class="w-10 h-10 text-gold mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
             '<p class="text-sm font-medium text-white">Vidéo bloquée</p>' +
-            '<p class="text-xs text-slate-400 mt-1">Abonnement requis (15 000 Ar)</p>' +
+            '<p class="text-xs text-slate-400 mt-1">Abonnement requis (20 000 Ar)</p>' +
             '<button onclick="showSection(\'tarifs\')" class="mt-3 text-xs bg-gold text-dark font-semibold px-3 py-1.5 rounded-lg">Débloquer</button>' +
             '</div>';
         } else if (isEmbed) {
@@ -833,11 +1197,11 @@
           media = '<div class="flex items-center justify-center h-full text-slate-600 text-sm">URL manquante</div>';
         }
 
-        const niveauLabel = ep.niveau === 'avance' ? '<span class="text-[10px] bg-gold/20 text-gold px-1.5 py-0.5 rounded ml-1">Avancé</span>' : '<span class="text-[10px] bg-accent/20 text-accent px-1.5 py-0.5 rounded ml-1">Débutant</span>';
         const dureeTxt = ep.duree ? ' • ' + escapeHtml(ep.duree) : '';
+        const wm = locked ? '' : '<div class="video-wm video-wm-tl">ROLAND TRADING</div><div class="video-wm video-wm-br">Formation YouTubeur payante</div>';
         return '<div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">' +
-          '<div class="video-wrapper no-download relative">' + media + '</div>' +
-          '<div class="p-4"><div class="text-xs text-accent font-medium mb-1">Épisode ' + (ep.num || '?') + niveauLabel + dureeTxt + '</div>' +
+          '<div class="video-wrapper no-download relative">' + media + wm + '</div>' +
+          '<div class="p-4"><div class="text-xs text-accent font-medium mb-1">Épisode ' + (ep.num || '?') + dureeTxt + '</div>' +
           '<h3 class="font-semibold">' + escapeHtml(ep.title || 'Sans titre') + '</h3>' +
           (ep.desc ? '<p class="text-xs text-slate-400 mt-1">' + escapeHtml(ep.desc) + '</p>' : '') +
           '</div></div>';
@@ -878,16 +1242,36 @@
       const code = document.getElementById('pay-code').value.trim();
       const tel = document.getElementById('pay-tel').value.trim();
       const method = document.getElementById('pay-method').value;
-      const fileName = document.getElementById('pay-preuve').files[0] ? document.getElementById('pay-preuve').files[0].name : '';
-      const data = loadData();
-      data.pending.push({
-        id: Date.now(),
-        code, tel, method, preuve: fileName,
-        date: new Date().toLocaleDateString('fr-FR')
-      });
-      savePending(data.pending);
-      document.getElementById('pay-form').classList.add('hidden');
-      document.getElementById('pay-success').classList.remove('hidden');
+      const file = document.getElementById('pay-preuve').files[0];
+      const fileName = file ? file.name : '';
+      const finish = (preuveData) => {
+        const data = loadData();
+        data.pending.push({
+          id: Date.now(),
+          code, tel, method, preuve: fileName,
+          preuveData: preuveData || '',
+          date: new Date().toLocaleDateString('fr-FR')
+        });
+        try {
+          savePending(data.pending);
+        } catch (err) {
+          // if too large, save without image
+          data.pending[data.pending.length - 1].preuveData = '';
+          savePending(data.pending);
+          showToast('Preuve enregistrée (image trop lourde, nom seul)', 'error');
+        }
+        document.getElementById('pay-form').classList.add('hidden');
+        document.getElementById('pay-success').classList.remove('hidden');
+        showToast('Preuve envoyée — en attente de validation');
+      };
+      if (file && file.size < 1.2 * 1024 * 1024) {
+        const reader = new FileReader();
+        reader.onload = () => finish(reader.result);
+        reader.onerror = () => finish('');
+        reader.readAsDataURL(file);
+      } else {
+        finish('');
+      }
     }
 
     function sendChat(e) {
@@ -914,8 +1298,10 @@
     // ADMIN
     function loginAdmin(e) {
       e.preventDefault();
-      if (document.getElementById('admin-key').value === ADMIN_KEY) {
+      const entered = document.getElementById('admin-key').value;
+      if (simpleHash(entered) === ADMIN_KEY_HASH) {
         isAdminLogged = true;
+        sessionStorage.setItem('smc_admin', '1');
         document.getElementById('admin-error').classList.add('hidden');
         document.getElementById('admin-login').classList.add('hidden');
         document.getElementById('admin-dashboard').classList.remove('hidden');
@@ -926,6 +1312,7 @@
     }
     function logoutAdmin() {
       isAdminLogged = false;
+      sessionStorage.removeItem('smc_admin');
       document.getElementById('admin-dashboard').classList.add('hidden');
       document.getElementById('admin-login').classList.remove('hidden');
       document.getElementById('admin-key').value = '';
@@ -946,28 +1333,44 @@
       document.getElementById('set-price-ar').value = data.settings.priceAr || '';
       document.getElementById('set-admin-contact').value = data.settings.adminContact || '';
 
-      // Tableau membres
+      // Gérer les accès membres (recherche + filtre)
       const tbody = document.getElementById('members-table-body');
       const empty = document.getElementById('members-table-empty');
-      if (data.members.length === 0) {
+      const searchEl = document.getElementById('member-search');
+      const filterEl = document.getElementById('member-filter');
+      const q = (searchEl ? searchEl.value : '').trim().toLowerCase();
+      const filter = filterEl ? filterEl.value : 'all';
+      let members = data.members.slice();
+      if (filter === 'paid') members = members.filter(m => m.subscribed);
+      if (filter === 'free') members = members.filter(m => !m.subscribed);
+      if (q) {
+        members = members.filter(m =>
+          (m.nom || '').toLowerCase().includes(q) ||
+          (m.code || '').toLowerCase().includes(q) ||
+          (m.tel || '').toLowerCase().includes(q)
+        );
+      }
+      if (members.length === 0) {
         tbody.innerHTML = '';
         empty.classList.remove('hidden');
+        empty.textContent = data.members.length === 0 ? 'Aucun membre inscrit.' : 'Aucun résultat pour cette recherche.';
       } else {
         empty.classList.add('hidden');
-        tbody.innerHTML = data.members.map(m =>
+        tbody.innerHTML = members.map(m =>
           '<tr class="hover:bg-slate-800/40">' +
           '<td class="py-2.5 pr-3 font-medium">' + escapeHtml(m.nom) + '</td>' +
           '<td class="py-2.5 pr-3 font-mono text-gold text-xs">' + escapeHtml(m.code || '—') + '</td>' +
           '<td class="py-2.5 pr-3 text-xs">' + escapeHtml(m.tel) + '</td>' +
           '<td class="py-2.5 pr-3">' + (m.subscribed
-            ? '<span class="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">Abonné</span>'
-            : '<span class="text-xs bg-slate-700 text-slate-300 px-2 py-0.5 rounded">Gratuit</span>') + '</td>' +
+            ? '<span class="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">✓ Accès complet</span>'
+            : '<span class="text-xs bg-slate-700 text-slate-300 px-2 py-0.5 rounded">🔒 Bloqué</span>') + '</td>' +
           '<td class="py-2.5 pr-3 text-xs text-slate-400">' + (m.date || '') + '</td>' +
-          '<td class="py-2.5">' +
+          '<td class="py-2.5 whitespace-nowrap">' +
           (m.subscribed
-            ? '<button onclick="revokeSub(' + m.id + ')" class="text-xs text-red-400 hover:underline">Révoquer</button>'
-            : '<button onclick="forceActivate(' + m.id + ')" class="text-xs text-accent hover:underline">Activer</button>') +
-          ' · <button onclick="removeMember(' + m.id + ')" class="text-xs text-slate-500 hover:underline">Suppr.</button>' +
+            ? '<button onclick="revokeSub(' + m.id + ')" class="text-xs bg-red-900/40 text-red-300 hover:bg-red-900/60 px-2 py-1 rounded">Révoquer</button>'
+            : '<button onclick="forceActivate(' + m.id + ')" class="text-xs bg-accent/20 text-accent hover:bg-accent/30 px-2 py-1 rounded">Activer</button>') +
+          ' <button onclick="adminResetPass(' + m.id + ')" class="text-xs bg-gold/20 text-gold hover:bg-gold/30 px-2 py-1 rounded ml-1">Réinit. MDP</button>' +
+          ' <button onclick="removeMember(' + m.id + ')" class="text-xs text-slate-500 hover:text-red-400 ml-1">Suppr.</button>' +
           '</td></tr>'
         ).join('');
       }
@@ -978,11 +1381,13 @@
         list.innerHTML = '<p class="text-sm text-slate-500">Aucun paiement en attente.</p>';
       } else {
         list.innerHTML = data.pending.map(r =>
-          '<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-slate-800/50 rounded-lg p-4">' +
+          '<div class="flex flex-col md:flex-row md:items-start justify-between gap-3 bg-slate-800/50 rounded-lg p-4">' +
+          '<div class="flex gap-3 min-w-0">' +
+          (r.preuveData ? '<a href="' + r.preuveData + '" target="_blank" class="shrink-0"><img src="' + r.preuveData + '" alt="preuve" class="w-16 h-16 object-cover rounded border border-slate-600"></a>' : '') +
           '<div><div class="font-medium">Code: ' + escapeHtml(r.code) + ' · ' + escapeHtml(r.tel) + '</div>' +
           '<div class="text-xs text-slate-400">' + (r.method || '').toUpperCase() + ' · ' + r.date +
-          (r.preuve ? ' · Preuve: ' + escapeHtml(r.preuve) : '') + '</div></div>' +
-          '<div class="flex gap-2">' +
+          (r.preuve ? ' · ' + escapeHtml(r.preuve) : '') + '</div></div></div>' +
+          '<div class="flex gap-2 shrink-0">' +
           '<button onclick="validatePayment(' + r.id + ')" class="bg-accent text-dark text-sm font-medium px-4 py-1.5 rounded-lg">Valider & débloquer</button>' +
           '<button onclick="rejectPayment(' + r.id + ')" class="bg-slate-700 text-sm px-4 py-1.5 rounded-lg">Refuser</button>' +
           '</div></div>'
@@ -991,16 +1396,32 @@
 
       // Episodes list
       const epList = document.getElementById('admin-episodes-list');
-      if (data.episodes.length === 0) {
-        epList.innerHTML = '<p class="text-xs text-slate-500">Aucun épisode.</p>';
-      } else {
-        epList.innerHTML = data.episodes.slice().sort((a,b)=>(Number(a.num)||0)-(Number(b.num)||0)).map(ep =>
-          '<div class="flex items-center justify-between bg-slate-800/40 rounded-lg px-3 py-2 text-sm">' +
-          '<span>Ép. ' + (ep.num||'?') + ' — ' + escapeHtml(ep.title) +
-          (ep.niveau === 'avance' ? ' <span class="text-gold text-[10px]">[Avancé]</span>' : ' <span class="text-accent text-[10px]">[Débutant]</span>') +
-          '</span>' +
-          '<button onclick="deleteEpisode(' + ep.id + ')" class="text-red-400 text-xs hover:underline">Supprimer</button></div>'
-        ).join('');
+      if (epList) {
+        if (data.episodes.length === 0) {
+          epList.innerHTML = '<p class="text-xs text-slate-500">Aucun épisode.</p>';
+        } else {
+          epList.innerHTML = data.episodes.slice().sort((a,b)=>(Number(a.num)||0)-(Number(b.num)||0)).map(ep =>
+            '<div class="flex items-center justify-between bg-slate-800/40 rounded-lg px-3 py-2 text-sm">' +
+            '<span>Ép. ' + (ep.num||'?') + ' — ' + escapeHtml(ep.title) +
+            '</span>' +
+            '<button onclick="deleteEpisode(' + ep.id + ')" class="text-red-400 text-xs hover:underline">Supprimer</button></div>'
+          ).join('');
+        }
+      }
+
+      // PDFs list (admin)
+      const pdfList = document.getElementById('admin-pdfs-list');
+      if (pdfList) {
+        const pdfs = data.pdfs || [];
+        if (pdfs.length === 0) {
+          pdfList.innerHTML = '<p class="text-xs text-slate-500">Aucun PDF publié.</p>';
+        } else {
+          pdfList.innerHTML = pdfs.map(p =>
+            '<div class="flex items-center justify-between bg-slate-800/40 rounded-lg px-3 py-2 text-sm">' +
+            '<span>📄 ' + escapeHtml(p.title) + (p.pages ? ' <span class="text-slate-500 text-xs">(' + escapeHtml(p.pages) + ')</span>' : '') + '</span>' +
+            '<button onclick="deletePdf(' + p.id + ')" class="text-red-400 text-xs hover:underline">Supprimer</button></div>'
+          ).join('');
+        }
       }
     }
 
@@ -1012,7 +1433,7 @@
         mvolaName: document.getElementById('set-mvola-name').value.trim(),
         usdt: document.getElementById('set-usdt').value.trim(),
         usdtAmount: document.getElementById('set-usdt-amount').value.trim(),
-        priceAr: document.getElementById('set-price-ar').value.trim() || '15000',
+        priceAr: document.getElementById('set-price-ar').value.trim() || '20000',
         adminContact: document.getElementById('set-admin-contact').value.trim()
       };
       saveSettings(data.settings);
@@ -1048,14 +1469,24 @@
     function forceActivate(id) {
       const data = loadData();
       const m = data.members.find(x => x.id === id);
-      if (m) { m.subscribed = true; saveMembers(data.members); renderAdmin(); }
+      if (m) {
+        m.subscribed = true;
+        saveMembers(data.members);
+        renderAdmin();
+        showToast('Accès activé pour ' + m.nom + ' — Vidéos + PDFs débloqués');
+      }
     }
 
     function revokeSub(id) {
-      if (!confirm('Révoquer l\'abonnement de ce membre ?')) return;
+      if (!confirm('Révoquer l\'accès de ce membre ? (Vidéos + PDFs seront rebloqués)')) return;
       const data = loadData();
       const m = data.members.find(x => x.id === id);
-      if (m) { m.subscribed = false; saveMembers(data.members); renderAdmin(); }
+      if (m) {
+        m.subscribed = false;
+        saveMembers(data.members);
+        renderAdmin();
+        showToast('Accès révoqué pour ' + m.nom, 'error');
+      }
     }
 
     function removeMember(id) {
@@ -1064,6 +1495,34 @@
       data.members = data.members.filter(m => m.id !== id);
       saveMembers(data.members);
       renderAdmin();
+    }
+
+    function adminResetPass(id) {
+      const data = loadData();
+      const m = data.members.find(x => x.id === id);
+      if (!m) return;
+      const newPass = genPass();
+      if (!confirm('Réinitialiser le mot de passe de ' + m.nom + ' ?\nNouveau MDP sera affiché une fois.')) return;
+      m.password = newPass;
+      saveMembers(data.members);
+      alert('Nouveau mot de passe pour ' + m.nom + ' (' + m.code + ') :\n\n' + newPass + '\n\nCommuniquez-le au membre de façon sécurisée.');
+      renderAdmin();
+    }
+
+    function exportMembersCsv() {
+      const data = loadData();
+      const rows = [['Nom', 'Code', 'Telephone', 'Abonne', 'Date']];
+      data.members.forEach(m => {
+        rows.push([m.nom || '', m.code || '', m.tel || '', m.subscribed ? 'oui' : 'non', m.date || '']);
+      });
+      const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'smc-membres-' + new Date().toISOString().slice(0, 10) + '.csv';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      showToast('Export CSV téléchargé');
     }
 
     function updateLienSignaux() {
@@ -1078,11 +1537,10 @@
       const title = document.getElementById('new-ep-title').value.trim();
       const url = document.getElementById('new-ep-url').value.trim();
       const desc = document.getElementById('new-ep-desc').value.trim();
-      const niveau = document.getElementById('new-ep-niveau') ? document.getElementById('new-ep-niveau').value : 'debutant';
       const duree = document.getElementById('new-ep-duree') ? document.getElementById('new-ep-duree').value.trim() : '';
       if (!title) { alert('Titre requis'); return; }
       const data = loadData();
-      data.episodes.push({ id: Date.now(), num: num || (data.episodes.length + 1), title, url, desc, niveau, duree });
+      data.episodes.push({ id: Date.now(), num: num || (data.episodes.length + 1), title, url, desc, duree });
       saveEpisodes(data.episodes);
       document.getElementById('new-ep-num').value = '';
       document.getElementById('new-ep-title').value = '';
@@ -1101,6 +1559,52 @@
       renderAdmin();
     }
 
+    function addPdf() {
+      const title = document.getElementById('new-pdf-title').value.trim();
+      const pages = document.getElementById('new-pdf-pages').value.trim();
+      const fileInput = document.getElementById('new-pdf-file');
+      const file = fileInput && fileInput.files && fileInput.files[0];
+      if (!title) { alert('Titre requis'); return; }
+      if (!file) { alert('Choisissez un fichier PDF'); return; }
+      if (file.type && file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+        alert('Le fichier doit être un PDF'); return;
+      }
+      if (file.size > 15 * 1024 * 1024) {
+        alert('Fichier trop lourd (max ~15 Mo recommandé)'); return;
+      }
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const dataUrl = reader.result;
+        const id = Date.now();
+        const meta = { id, title, pages: pages || '', size: file.size, name: file.name };
+        try {
+          await idbPutPdf({ id, title, pages: pages || '', size: file.size, name: file.name, dataUrl });
+          const data = loadData();
+          data.pdfs.push(meta);
+          savePdfsMeta(data.pdfs);
+        } catch (e) {
+          alert('Erreur stockage PDF (IndexedDB). Essayez un fichier plus petit.');
+          return;
+        }
+        document.getElementById('new-pdf-title').value = '';
+        document.getElementById('new-pdf-pages').value = '';
+        fileInput.value = '';
+        renderAdmin();
+        showToast('PDF publié (IndexedDB) !');
+      };
+      reader.onerror = function() { alert('Erreur lecture du fichier'); };
+      reader.readAsDataURL(file);
+    }
+
+    async function deletePdf(id) {
+      if (!confirm('Supprimer ce PDF ?')) return;
+      try { await idbDeletePdf(id); } catch (e) {}
+      const data = loadData();
+      data.pdfs = data.pdfs.filter(p => p.id !== id);
+      savePdfsMeta(data.pdfs);
+      renderAdmin();
+    }
+
     function addSignal() {
       const pair = document.getElementById('new-signal-pair').value.trim();
       const text = document.getElementById('new-signal-text').value.trim();
@@ -1115,13 +1619,31 @@
     }
 
     function resetAllData() {
-      if (!confirm('Effacer TOUTES les données ?')) return;
-      ['smc_members','smc_pending','smc_episodes','smc_signals','smc_settings'].forEach(k => localStorage.removeItem(k));
+      if (!confirm('Effacer TOUTES les données (membres, PDF, épisodes, paiements) ?')) return;
+      ['smc_members','smc_pending','smc_episodes','smc_pdfs','smc_pdfs_meta','smc_signals','smc_settings','smc_session'].forEach(k => localStorage.removeItem(k));
+      sessionStorage.clear();
+      try {
+        indexedDB.deleteDatabase('smc_pdf_store');
+        pdfDb = null;
+      } catch (e) {}
+      isMembreLogged = false;
+      currentMember = null;
       renderAdmin();
       alert('Données réinitialisées.');
     }
 
+    // Init
     applyPaymentDisplay();
+    (function initSession() {
+      const m = restoreSession();
+      if (m) {
+        isMembreLogged = true;
+        currentMember = m;
+      }
+      if (sessionStorage.getItem('smc_admin') === '1') {
+        isAdminLogged = true;
+      }
+    })();
     showSection('home');
     initCloud();
   </script>
