@@ -572,8 +572,20 @@
 
           <!-- Admin PDF management -->
           <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6">
+            <h3 class="font-semibold mb-3">Ajouter un PDF via lien Google Drive (recommandé)</h3>
+            <p class="text-xs text-slate-500 mb-3">Visible par TOUS les membres, quel que soit leur téléphone. Utilisez un lien Google Drive partagé en "Toute personne disposant du lien".</p>
+            <div class="grid md:grid-cols-2 gap-3 mb-3">
+              <input type="text" id="new-pdf-title-url" placeholder="Titre du document (ex: Guide Order Blocks)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+              <input type="text" id="new-pdf-pages-url" placeholder="Pages (ex: 24 pages) — optionnel" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+            </div>
+            <input type="text" id="new-pdf-url" placeholder="Lien Google Drive du PDF (https://drive.google.com/file/d/...)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3">
+            <button onclick="addPdfByUrl()" class="w-full bg-accent/20 text-accent py-2 rounded-lg text-sm font-medium hover:bg-accent/30">Publier le PDF (lien Drive)</button>
+          </div>
+
+          <!-- Admin PDF management -->
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6">
             <h3 class="font-semibold mb-3">Ajouter un PDF (fichier mivantana)</h3>
-            <p class="text-xs text-slate-500 mb-3">Fichier .pdf stocké dans IndexedDB (plus grand que localStorage). Visible dans le site pour les abonnés uniquement.</p>
+            <p class="text-xs text-red-400 mb-3">⚠️ Visible SEULEMENT sur ce téléphone/navigateur (stockage local). Préférez l'option "lien Google Drive" ci-dessus pour que tous les membres le voient.</p>
             <div class="grid md:grid-cols-2 gap-3 mb-3">
               <input type="text" id="new-pdf-title" placeholder="Titre du document (ex: Guide Order Blocks)" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
               <input type="text" id="new-pdf-pages" placeholder="Pages (ex: 24 pages) — optionnel" class="bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm">
@@ -583,6 +595,7 @@
             <button onclick="addPdf()" class="w-full bg-red-500/20 text-red-400 py-2 rounded-lg text-sm font-medium hover:bg-red-500/30">Publier le PDF dans le site</button>
             <div id="admin-pdfs-list" class="mt-4 space-y-2"></div>
           </div>
+
 
           <div class="grid md:grid-cols-2 gap-6 mb-6">
             <div class="bg-slate-900 border border-slate-800 rounded-xl p-6">
@@ -706,7 +719,7 @@
         pending: JSON.parse(localStorage.getItem('smc_pending') || '[]'),
         episodes: JSON.parse(localStorage.getItem('smc_episodes') || '[]'),
         pdfs: rawPdfs.map(function(p) {
-          return { id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '' };
+          return { id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '', url: p.url || '' };
         }),
         signals: JSON.parse(localStorage.getItem('smc_signals') || '[]'),
         settings: Object.assign({}, DEFAULT_SETTINGS, JSON.parse(localStorage.getItem('smc_settings') || '{}'))
@@ -717,7 +730,7 @@
     function saveEpisodes(arr) { localStorage.setItem('smc_episodes', JSON.stringify(arr)); pushToCloud('episodes', arr); }
     function savePdfsMeta(arr) {
       // only metadata in localStorage (ny fichier PDF mihitsy dia mijanona ao amin'ny IndexedDB an'ny téléphone, tsy azo alefa amin'ny cloud noho ny habeny)
-      const meta = arr.map(p => ({ id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '' }));
+      const meta = arr.map(p => ({ id: p.id, title: p.title, pages: p.pages || '', size: p.size || 0, name: p.name || '', url: p.url || '' }));
       localStorage.setItem('smc_pdfs_meta', JSON.stringify(meta));
       // clean old key if any
       try { localStorage.removeItem('smc_pdfs'); } catch (e) {}
@@ -1095,14 +1108,18 @@
 
     async function openPdfById(id) {
       try {
+        const data = loadData();
+        const p = (data.pdfs || []).find(x => x.id === id);
+        if (p && p.url) {
+          openPdfViewer(p.url, p.title || 'Document');
+          return;
+        }
         let rec = await idbGetPdf(id);
         if (rec && rec.dataUrl) {
           openPdfViewer(rec.dataUrl, rec.title || 'Document');
           return;
         }
         // fallback old localStorage dataUrl
-        const data = loadData();
-        const p = (data.pdfs || []).find(x => x.id === id);
         if (p && p.dataUrl) {
           openPdfViewer(p.dataUrl, p.title || 'Document');
           return;
@@ -1557,6 +1574,33 @@
       data.episodes = data.episodes.filter(e => e.id !== id);
       saveEpisodes(data.episodes);
       renderAdmin();
+    }
+
+    function addPdfByUrl() {
+      const title = document.getElementById('new-pdf-title-url').value.trim();
+      const pages = document.getElementById('new-pdf-pages-url').value.trim();
+      const url = document.getElementById('new-pdf-url').value.trim();
+      if (!title) { alert('Titre requis'); return; }
+      if (!url) { alert('Lien Drive requis'); return; }
+      const embedUrl = getDrivePdfEmbedUrl(url);
+      if (!embedUrl) { alert('Lien Google Drive non reconnu. Utilisez le lien "Copier le lien" depuis Drive.'); return; }
+      const id = Date.now();
+      const meta = { id, title, pages: pages || '', size: 0, name: '', url: embedUrl };
+      const data = loadData();
+      data.pdfs.push(meta);
+      savePdfsMeta(data.pdfs);
+      document.getElementById('new-pdf-title-url').value = '';
+      document.getElementById('new-pdf-pages-url').value = '';
+      document.getElementById('new-pdf-url').value = '';
+      renderAdmin();
+      showToast('PDF publié (lien Drive) !');
+    }
+
+    function getDrivePdfEmbedUrl(url) {
+      if (!url) return null;
+      const gd = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=download&)?id=)([a-zA-Z0-9_-]+)/);
+      if (gd) return 'https://drive.google.com/file/d/' + gd[1] + '/preview';
+      return null;
     }
 
     function addPdf() {
