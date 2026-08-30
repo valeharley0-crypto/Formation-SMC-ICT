@@ -107,20 +107,16 @@
               Formation <span class="gradient-text">Stratégie</span><br/>SMC / ICT
             </h1>
             <p class="text-slate-400 text-lg mb-8 max-w-lg">
-              Inscription <strong class="text-white">gratuite</strong>. Explorez le site, puis débloquez les vidéos en épisodes en validant votre abonnement (20 000 Ar).
+              Inscription <strong class="text-white">gratuite</strong>. Créez votre compte pour accéder à la formation.
             </p>
             <div class="flex flex-wrap gap-4">
               <button onclick="showSection('membre')" class="bg-accent hover:bg-emerald-400 text-dark font-bold px-8 py-3.5 rounded-xl text-base transition shadow-lg shadow-accent/20">
                 S'inscrire gratuitement
               </button>
-              <button onclick="showSection('tarifs')" class="border border-slate-600 hover:border-accent text-slate-200 px-8 py-3.5 rounded-xl transition">
-                Voir les tarifs
-              </button>
             </div>
             <div class="mt-10 flex flex-wrap items-center gap-6 text-sm text-slate-400">
               <div class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Inscription gratuite</div>
-              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Vidéos bloquées sans abonnement</div>
-              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Accès à vie après paiement</div>
+              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Épisode gratuit disponible</div>
             </div>
           </div>
           <div class="relative">
@@ -129,13 +125,10 @@
               <div class="text-sm font-medium text-slate-300 mb-4">Ce que vous obtenez</div>
               <ul class="space-y-3 text-sm">
                 <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Inscription gratuite → explorateur le site</span></li>
-                <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Épisodes vidéo (débloqués après paiement)</span></li>
+                <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Épisodes vidéo par formation</span></li>
                 <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Guides PDF + checklists</span></li>
                 <li class="flex items-start gap-3"><span class="text-accent mt-0.5">▸</span><span>Signaux + chat admin</span></li>
               </ul>
-              <div class="mt-6 pt-4 border-t border-slate-700 text-center">
-                <p class="text-xs text-slate-500">20 000 Ar • MVola ou USDT</p>
-              </div>
             </div>
           </div>
         </div>
@@ -403,7 +396,7 @@
 
               <div id="tab-signaux" class="membre-content hidden">
                 <h2 class="text-xl font-bold mb-4">Signaux</h2>
-                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6">
+                <div id="signaux-lien-box" class="bg-slate-900 border border-slate-800 rounded-xl p-6 mb-6 hidden">
                   <h3 class="font-semibold mb-2">Plateforme de Signaux</h3>
                   <a href="#" id="lien-signaux" target="_blank" class="inline-flex items-center gap-2 bg-accent text-dark font-semibold px-5 py-2.5 rounded-lg hover:bg-emerald-400 transition">Accéder aux Signaux →</a>
                 </div>
@@ -566,6 +559,10 @@
             </div>
             <input type="text" id="new-ep-url" placeholder="Lien vidéo privée (.mp4 / Drive / Dropbox / serveur)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3">
             <input type="text" id="new-ep-desc" placeholder="Description (optionnel)" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm mb-3">
+            <label class="flex items-center gap-2 mb-3 text-sm text-slate-300">
+              <input type="checkbox" id="new-ep-free" class="w-4 h-4">
+              Épisode gratuit (visible sans abonnement — aperçu)
+            </label>
             <button onclick="addEpisode()" class="w-full bg-accent/20 text-accent py-2 rounded-lg text-sm font-medium hover:bg-accent/30">Publier l'épisode</button>
             <div id="admin-episodes-list" class="mt-4 space-y-2"></div>
           </div>
@@ -1198,8 +1195,9 @@
       list.innerHTML = eps.map(ep => {
         const embed = getEmbedUrl(ep.url);
         const isEmbed = embed && (embed.includes('youtube') || embed.includes('vimeo') || embed.includes('drive.google.com'));
+        const epLocked = locked && !ep.free;
         let media = '';
-        if (locked) {
+        if (epLocked) {
           media = '<div class="locked-overlay">' +
             '<svg class="w-10 h-10 text-gold mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
             '<p class="text-sm font-medium text-white">Vidéo bloquée</p>' +
@@ -1215,11 +1213,12 @@
         }
 
         const dureeTxt = ep.duree ? ' • ' + escapeHtml(ep.duree) : '';
-        const wm = locked ? '' : '<div class="video-wm video-wm-tl">ROLAND TRADING</div><div class="video-wm video-wm-br">Formation YouTubeur payante</div>';
+        const wm = epLocked ? '' : '<div class="video-wm video-wm-tl">ROLAND TRADING</div><div class="video-wm video-wm-br">Formation YouTubeur payante</div>';
+        const freeBadge = ep.free ? '<span class="ml-2 text-[10px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded-full align-middle">Gratuit</span>' : '';
         return '<div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">' +
           '<div class="video-wrapper no-download relative">' + media + wm + '</div>' +
           '<div class="p-4"><div class="text-xs text-accent font-medium mb-1">Épisode ' + (ep.num || '?') + dureeTxt + '</div>' +
-          '<h3 class="font-semibold">' + escapeHtml(ep.title || 'Sans titre') + '</h3>' +
+          '<h3 class="font-semibold">' + escapeHtml(ep.title || 'Sans titre') + freeBadge + '</h3>' +
           (ep.desc ? '<p class="text-xs text-slate-400 mt-1">' + escapeHtml(ep.desc) + '</p>' : '') +
           '</div></div>';
       }).join('');
@@ -1228,7 +1227,7 @@
       const progressEl = document.getElementById('episode-progress');
       if (progressEl) {
         const total = eps.length;
-        const unlocked = locked ? 0 : total;
+        const unlocked = locked ? eps.filter(e => e.free).length : total;
         const pct = total ? Math.round((unlocked / total) * 100) : 0;
         progressEl.innerHTML = '<div class="flex justify-between text-xs text-slate-400 mb-1"><span>Progression</span><span>' + unlocked + ' / ' + total + ' épisodes</span></div>' +
           '<div class="h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-accent rounded-full transition-all" style="width:' + pct + '%"></div></div>';
@@ -1239,9 +1238,21 @@
       const data = loadData();
       const lienEl = document.getElementById('lien-signaux');
       if (lienEl) lienEl.href = data.settings.lienSignaux || '#';
+      const lienBox = document.getElementById('signaux-lien-box');
       const list = document.getElementById('signaux-list');
       if (!list) return;
       const sigs = data.signals || [];
+      const locked = !(currentMember && currentMember.subscribed);
+      if (locked) {
+        if (lienBox) lienBox.classList.add('hidden');
+        list.innerHTML = '<div class="bg-slate-900 border border-slate-800 rounded-xl p-8 text-center">' +
+          '<svg class="w-12 h-12 text-gold mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>' +
+          '<p class="font-semibold text-white mb-1">Signaux verrouillés</p>' +
+          '<p class="text-sm text-slate-400 mb-4">Abonnement requis (20 000 Ar) pour accéder aux signaux</p>' +
+          '<button onclick="showSection(\'tarifs\')" class="bg-gold text-dark font-semibold px-5 py-2 rounded-lg text-sm">Débloquer →</button></div>';
+        return;
+      }
+      if (lienBox) lienBox.classList.remove('hidden');
       if (!sigs.length) {
         list.innerHTML = '<p class="text-sm text-slate-500">Aucun signal pour le moment.</p>';
         return;
@@ -1555,15 +1566,17 @@
       const url = document.getElementById('new-ep-url').value.trim();
       const desc = document.getElementById('new-ep-desc').value.trim();
       const duree = document.getElementById('new-ep-duree') ? document.getElementById('new-ep-duree').value.trim() : '';
+      const free = document.getElementById('new-ep-free') ? document.getElementById('new-ep-free').checked : false;
       if (!title) { alert('Titre requis'); return; }
       const data = loadData();
-      data.episodes.push({ id: Date.now(), num: num || (data.episodes.length + 1), title, url, desc, duree });
+      data.episodes.push({ id: Date.now(), num: num || (data.episodes.length + 1), title, url, desc, duree, free });
       saveEpisodes(data.episodes);
       document.getElementById('new-ep-num').value = '';
       document.getElementById('new-ep-title').value = '';
       document.getElementById('new-ep-url').value = '';
       document.getElementById('new-ep-desc').value = '';
       if (document.getElementById('new-ep-duree')) document.getElementById('new-ep-duree').value = '';
+      if (document.getElementById('new-ep-free')) document.getElementById('new-ep-free').checked = false;
       renderAdmin();
       showToast('Épisode publié avec succès !');
     }
